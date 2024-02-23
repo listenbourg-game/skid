@@ -85,7 +85,7 @@ skidinc.init = function() {
         skidinc.core();
     }, skidinc.interval);
 
-    skidinc.loadingScreen();
+   // skidinc.loadingScreen();
 
     setTimeout(function() {
         $('#loader').fadeOut('slow', function() {
