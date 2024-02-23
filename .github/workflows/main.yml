@@ -13,8 +13,7 @@ jobs:
   publish-tauri:
     permissions:
       contents: write
-      release:write
-      release:create
+      
     strategy:
       fail-fast: false
       matrix:
