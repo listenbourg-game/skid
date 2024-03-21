@@ -81,29 +81,31 @@ skidinc.loadingScreen = function() {
 };
 
 skidinc.init = function() {
-    skidinc.loops.core = setInterval(function() {
-        skidinc.core();
-    }, skidinc.interval);
+   
 
-   // skidinc.loadingScreen();
+    skidinc.loadingScreen();
 
     setTimeout(function() {
         $('#loader').fadeOut('slow', function() {
             $('#loader').remove();
         });
 
-        skidinc.script.init();
-        skidinc.autoscript.init();
-        skidinc.buy.init();
-        skidinc.achievements.init();
-        skidinc.options.init();
-        skidinc.kongregate.init();
-        skidinc.save.init();
-        
-        skidinc.domInit();
-        
-        skidinc.tutorial.begin();
-    }, 3500);
+        skidinc.script.init().then((d)=>{
+            skidinc.autoscript.init();
+            skidinc.buy.init();
+            skidinc.achievements.init();
+            skidinc.options.init();
+            skidinc.kongregate.init();
+            skidinc.save.init();
+            skidinc.loops.core = setInterval(function() {
+                skidinc.core();
+            }, skidinc.interval);
+            skidinc.domInit();
+            
+            skidinc.tutorial.begin();   
+        });
+       
+    }, 35);
 };
 
 skidinc.domInit = function() {

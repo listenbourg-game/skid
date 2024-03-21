@@ -1,5 +1,5 @@
 skidinc.save = {};
-skidinc.save.name = 'SKINC',
+skidinc.save.name = 'SKINC'
 
 skidinc.save.b64uEncode = function(what) {
 	return btoa(encodeURIComponent(what).replace(/%([0-9A-F]{2})/g, function(match, p1) {
@@ -13,16 +13,17 @@ skidinc.save.b64uDecode = function(what) {
 	}).join(''));
 };
 
-skidinc.save.saveNow = function(direct) {
-    var str = skidinc.save.b64uEncode(JSON.stringify(skidinc));
+skidinc.save.saveNow = async function(direct) {
+    var str = JSON.stringify(skidinc,null,2);
     
     localStorage.setItem(skidinc.save.name, str);
     
+    window.__TAURI__.fs.writeFile(await appDataDirPath+`save_${skidinc.player.username}.txt`,str)
     if (direct)
         return skidinc.console.print('<z>SAVE</z> game saved.');
 };
 
-skidinc.save.eraseNow = function() {
+skidinc.save.eraseNow = async function() {
     var conf = confirm('If you do this you will reset from scratch (no prestige by doing this)!');
     
     if (!conf)
@@ -30,17 +31,20 @@ skidinc.save.eraseNow = function() {
     
     window.onbeforeunload = function() {};
     clearInterval(skidinc.loops.save);
+    window.__TAURI__.fs.writeFile(await appDataDirPath+`save_${skidinc.player.username}.txt`,"")
     
     localStorage.removeItem(skidinc.save.name);
     location.reload();
 };
 
-skidinc.save.loadNow = function() {
-    if (localStorage.getItem(skidinc.save.name) == null)
-        return console.info('No save found...');
+skidinc.save.loadNow = async function() {
+
     
-    var str = localStorage.getItem(skidinc.save.name),
-        save = JSON.parse(skidinc.save.b64uDecode(str));
+    var str =await window.__TAURI__.fs.readTextFile(await appDataDirPath+`save_${skidinc.player.username}.txt`)
+    if(!str){
+        returnconsole.info('No save found...')
+    }
+    var    save = JSON.parse(str);
     
     skidinc.before = save.before;
     
@@ -61,7 +65,9 @@ skidinc.save.loadNow = function() {
     skidinc.server.owned = save.server.owned;
     
     skidinc.tutorial.finish = save.tutorial.finish;
-    
+    if(save.tutorial.finish){
+        skidinc.tutorial.skip()  
+    }
     skidinc.player.username = save.player.username;
     skidinc.player.money = save.player.money;
     skidinc.player.totalMoney = save.player.totalMoney;

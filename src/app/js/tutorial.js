@@ -2,6 +2,8 @@ skidinc.tutorial = {};
 skidinc.tutorial.enabled = true;
 skidinc.tutorial.finish = false;
 skidinc.tutorial.step = 0;
+console.log(Window)
+
 
 skidinc.tutorial.switchStep = function(step) {
     skidinc.tutorial.step = step;
@@ -42,7 +44,7 @@ skidinc.tutorial.core = function() {
     switch(this.step) {
         case 0:
             skidinc.console.inputEnabled = false;
-            
+            console.log(window.__tauri__)
             skidinc.console.print('<h>INTRODUCTION</h> Welcome to <b>SkidInc</b>, an idle-game with an hacking theme! I\'m a small tutorial explaining how to play this game. Before starting, you don\'t need to have any knowledge in programming or other stuff like this to understand and enjoy the game.', function() {
                 skidinc.console.print('<h>TUTORIAL</h> So, if you didn\'t noticed it, this is the terminal. This is where everything takes place. Terminal is divided into <b>2 parts</b>, <b>logs</b> (where things are written) and <b>input</b> where you write things (next to the <b>skidinc@root</b> thing).', function() {
                     skidinc.console.print('<h>TUTORIAL</h> Before starting this adventure, we need to know your username. To set your username, you need to type a command, which require an argument. This command is <b>username [yourUsername]</b>, where <b>username</b> is the command, and <b>[yourUsername]</b> is the argument of the command <b>(put your username without the [])</b> (you can\'t change your username later!).', function() {

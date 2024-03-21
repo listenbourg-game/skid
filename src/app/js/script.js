@@ -1,75 +1,47 @@
 skidinc.script = {};
 skidinc.script.secondArgs = [];
-
+const appDataDir=window.__TAURI__.path.appDataDir
+const appDataDirPath =  appDataDir().then((data)=>{return data});
 skidinc.script.available = true;
 skidinc.script.current = null;
 skidinc.script.time = 0;
 skidinc.script.maxTime = 0;
 skidinc.script.maxBar = 40;
 
-skidinc.script.unlocked = [true, false, false, false, false, false, false, false];
-skidinc.script.completed = [0, 0, 0, 0, 0, 0, 0, 0];
+skidinc.script.unlocked = [];
+skidinc.script.completed = [];
 skidinc.script.totalCompleted = 0;
-skidinc.script.scripts = [{
-    id: 'hare.ctx',
-    cost: 0,
-    money: 118,
-    exp: 8,
-   // time: 4,
-    i: 0
-}, {
-    id: 'yerg.trj',
-    cost: 3750,
-    money: 1298,
-    exp: 56,
-   // time: 4,
-    i: 1
-}, {
-    id: 'acid.pl',
-    cost: 52500,
-    money: 14278,
-    exp: 392,
-  //  time: 4,
-    i: 2
-}, {
-    id: 'memz.rsm',
-    cost: 735000,
-    money: 157058,
-    exp: 2744,
-   // time: 4,
-    i: 3
-}, {
-    id: 'gruel.vbs',
-    cost: 10290000,
-    money: 1727638,
-    exp: 19208,
-  //  time: 4,
-    i: 4
-}, {
-    id: 'cih.win',
-    cost: 144060000,
-    money: 19004018,
-    exp: 134456,
-  //  time: 4,
-    i: 5
-}, {
-    id: 'worm.cs',
-   cost: 2016840000,
-    money: 209044198,
-    exp: 941192,
-  //  time: 4,
-    i: 6
-}, {
-    id: 'blazer.dos',
-    cost: 28235760000,
-    money: 2299486178,
-    exp: 6588344,
-   // time: 4,
-    i: 7
-}].map((item)=>{
-    item.time=Math.pow(4,item.i+1)
-    return item
-})
+
+const i=async()=>{
+   var res=(await window.__TAURI__.fs.readTextFile(await appDataDirPath+`script.txt`)).toString().split("\n").map((item)=>{
+        item.id=item
+        return item
+    }).map((item,index)=>{
+        item.i=index
+        if(item.i==0){
+            skidinc.script.unlocked.push(true)   
+        }else{
+            skidinc.script.unlocked.push(false)
+        }
+        skidinc.script.completed.push(0)
+        return item
+    }).map((item)=>{
+        item.time=Math.pow(4,item.i+1)
+    
+        return item
+    }).map((item)=>{
+        item.exp=Math.pow(11,item.i+1)
+        return item
+    }).map((item)=>{
+        item.cost=Math.pow(20,item.i+1)
+        return item
+    }).map((item)=>{
+        item.money=118*item.i+1
+        return item
+    })
+    return res
+}
+
 
 skidinc.script.isExecuted = function() {
     var executed = !this.available;
@@ -272,29 +244,39 @@ skidinc.script.loop = function(times) {
             skidinc.script.finish();
     };
 };
+skidinc.script.slist=i()
+skidinc.script.init = async function() {
+    i().then((data)=>{
+        console.log(typeof data )
+        console.log(data)
+       
+       
+            skidinc.script.scripts =data          
+            
+            if (skidinc.script.scripts.length !== skidinc.script.unlocked.length) {
+                skidinc.script.unlocked = [];
+                
+                skidinc.script.scripts.forEach(function(i) {
+                    skidinc.script.unlocked.push(false);
+                });
+                
+                skidinc.script.unlocked[0] = true;
+            };
+            
+            if (skidinc.script.scripts.length !== skidinc.script.completed.length) {
+                skidinc.script.completed = [];
+                
+                skidinc.script.scripts.forEach(function(i) {
+                    skidinc.script.completed.push(0);
+                });
+            };
+            
+            skidinc.script.scripts.forEach(function(script) {
+                skidinc.script.secondArgs.push(script.id);
+            });
+            
+        })
 
-skidinc.script.init = function() {
-    if (skidinc.script.scripts.length !== skidinc.script.unlocked.length) {
-        skidinc.script.unlocked = [];
-        
-        skidinc.script.scripts.forEach(function(i) {
-            skidinc.script.unlocked.push(false);
-        });
-        
-        skidinc.script.unlocked[0] = true;
-    };
-    
-    if (skidinc.script.scripts.length !== skidinc.script.completed.length) {
-        skidinc.script.completed = [];
-        
-        skidinc.script.scripts.forEach(function(i) {
-            skidinc.script.completed.push(0);
-        });
-    };
-    
-    skidinc.script.scripts.forEach(function(script) {
-        skidinc.script.secondArgs.push(script.id);
-    });
 };
 
 skidinc.script.prestige = function() {

@@ -1,10 +1,6 @@
 skidinc.autoscript = {};
-skidinc.autoscript.unlocked = skidinc.script.scripts.map((use)=>{return false})
-skidinc.autoscript.time = skidinc.script.scripts.map((use)=>{return 0})
-skidinc.autoscript.cost = skidinc.script.scripts.map((item)=>{
-    
-    return Math.pow(25,item.i+1)*2
-})
+
+
 
 skidinc.autoscript.list = function() {
     return '<b>*</b> autoscripts got the same names as scripts. You can also check the autoscript tab for names.';
@@ -116,8 +112,8 @@ skidinc.autoscript.update = function() {
 
 skidinc.autoscript.domInit = function() {
     for (var i = 0; i < skidinc.script.scripts.length; i++) {
-        var script = skidinc.script.scripts[i],
-            unlocked = skidinc.autoscript.unlocked[i];
+        var script = skidinc.script.scripts[i]
+           
         
         $('#stats-autoscripts').append('<div id="autoscript-' + script.i + '" class="stat-container big-content">' +
             '<div id="autoscript-' + script.i + '-name" class="names">' +
@@ -135,21 +131,30 @@ skidinc.autoscript.domInit = function() {
 };
 
 skidinc.autoscript.init = function() {
-    if (skidinc.script.scripts.length !== skidinc.autoscript.unlocked.length) {
-        skidinc.autoscript.unlocked = [];
-        
-        skidinc.script.scripts.forEach(function(i) {
-            skidinc.autoscript.unlocked.push(false);
-        });
-    };
-
-    if (skidinc.script.scripts.length !== skidinc.autoscript.time.length) {
-        skidinc.autoscript.time = [];
-        
-        skidinc.script.scripts.forEach(function(i) {
-            skidinc.autoscript.time.push(0);
-        });
-    };
+    skidinc.script.slist.then((data)=>{
+        skidinc.autoscript.unlocked = data.map((use)=>{return false})
+        skidinc.autoscript.time = data.map((use)=>{return 0})
+        skidinc.autoscript.cost = data.map((item)=>{
+            
+            return Math.pow(25,item.i+1)*2
+        })
+        if (skidinc.script.scripts.length !== skidinc.autoscript.unlocked.length) {
+            skidinc.autoscript.unlocked = [];
+            
+            skidinc.script.scripts.forEach(function(i) {
+                skidinc.autoscript.unlocked.push(false);
+            });
+        };
+    
+        if (skidinc.script.scripts.length !== skidinc.autoscript.time.length) {
+            skidinc.autoscript.time = [];
+            
+            skidinc.script.scripts.forEach(function(i) {
+                skidinc.autoscript.time.push(0);
+            });
+        };
+    })
+   
 };
 
 skidinc.autoscript.prestige = function() {
