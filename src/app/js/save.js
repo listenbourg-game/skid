@@ -38,11 +38,11 @@ skidinc.save.eraseNow = async function() {
 };
 
 skidinc.save.loadNow = async function() {
-
+    if(await window.__TAURI__.fs.exists(`save_${skidinc.player.username}.txt`,{dir:window.__TAURI__.fs.BaseDirectory.AppData}))
     
     var str =await window.__TAURI__.fs.readTextFile(await appDataDirPath+`save_${skidinc.player.username}.txt`)
     if(!str){
-        returnconsole.info('No save found...')
+        return console.info('No save found...')
     }
     var    save = JSON.parse(str);
     

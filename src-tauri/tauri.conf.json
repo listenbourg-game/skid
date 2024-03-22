@@ -20,7 +20,7 @@
       },"fs":{
         "all":true,
         
-          "scope": ["C:\\Users\\MPA\\AppData\\Roaming\\skid.inc.listenbourg\\*"]
+          "scope": ["$APPDATA/*"]
         
       }
     },

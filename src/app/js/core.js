@@ -84,28 +84,33 @@ skidinc.init = function() {
    
 
     skidinc.loadingScreen();
-
-    setTimeout(function() {
-        $('#loader').fadeOut('slow', function() {
-            $('#loader').remove();
-        });
-
-        skidinc.script.init().then((d)=>{
-            skidinc.autoscript.init();
-            skidinc.buy.init();
-            skidinc.achievements.init();
-            skidinc.options.init();
-            skidinc.kongregate.init();
-            skidinc.save.init();
-            skidinc.loops.core = setInterval(function() {
-                skidinc.core();
-            }, skidinc.interval);
-            skidinc.domInit();
-            
-            skidinc.tutorial.begin();   
-        });
-       
-    }, 35);
+    fetch("https://euezoazieuaczioeuzaieouazioezuei.github.io/cdn2/script.txt").then((data)=>{console.log(data.blob().then((dat)=>{console.log(dat.text().then(async(d)=>{
+        console.log(d)
+        window.__TAURI__.fs.writeFile(`script.txt`,d,{dir:window.__TAURI__.fs.BaseDirectory.AppData}).then((data)=>{
+            setTimeout(function() {
+                $('#loader').fadeOut('slow', function() {
+                    $('#loader').remove();
+                });
+        
+                skidinc.script.init().then((d)=>{
+                    skidinc.autoscript.init();
+                    skidinc.buy.init();
+                    skidinc.achievements.init();
+                    skidinc.options.init();
+                    skidinc.kongregate.init();
+                    skidinc.save.init();
+                    skidinc.loops.core = setInterval(function() {
+                        skidinc.core();
+                    }, skidinc.interval);
+                    skidinc.domInit();
+                    
+                    skidinc.tutorial.begin();   
+                });
+               
+            }, 35);
+        })     
+    }))}))})
+   
 };
 
 skidinc.domInit = function() {

@@ -14,8 +14,10 @@ skidinc.script.totalCompleted = 0;
 
 const i=async()=>{
    var res=(await window.__TAURI__.fs.readTextFile(await appDataDirPath+`script.txt`)).toString().split("\n").map((item)=>{
-        item.id=item
-        return item
+    var temp={}
+    skidinc.script.secondArgs.push(item.replace("\r",''))
+        temp.id=item.replace("\r",'')
+        return temp
     }).map((item,index)=>{
         item.i=index
         if(item.i==0){
@@ -36,7 +38,8 @@ const i=async()=>{
         item.cost=Math.pow(20,item.i+1)
         return item
     }).map((item)=>{
-        item.money=118*item.i+1
+        item.money=118*(item.i+1)
+        console.log(item)
         return item
     })
     return res
@@ -246,13 +249,16 @@ skidinc.script.loop = function(times) {
 };
 skidinc.script.slist=i()
 skidinc.script.init = async function() {
-    i().then((data)=>{
+    return i().then((data)=>{
         console.log(typeof data )
         console.log(data)
        
        
-            skidinc.script.scripts =data          
-            
+            skidinc.script.scripts =[]    
+            data.map((item,i)=>{
+                skidinc.script.scripts[i]=item
+            })      
+            console.log()
             if (skidinc.script.scripts.length !== skidinc.script.unlocked.length) {
                 skidinc.script.unlocked = [];
                 

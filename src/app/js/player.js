@@ -41,10 +41,7 @@ skidinc.player.setUsername = function(args) {
     if (skidinc.tutorial.step == 0 && !skidinc.tutorial.finish) {
         if (args[0].length < 1)
             return skidinc.console.print('<x>ERR</x> put a valid username.');
-        
-        if (args[0].length > 12)
-            return skidinc.console.print('<x>ERR</x> <b>' + args[0] + '</b> is too long (> 12 char).');
-        
+       
         $('body').append('<p id="username-width" style="display: none; font-size: 26px;">' + args[0] + '</p>');
         
         var usernameWidth = Math.floor($('#username-width').width());
@@ -54,13 +51,12 @@ skidinc.player.setUsername = function(args) {
         $('#username-width').remove();
         $('#input-session').html(args[0]);
         $('#command-input').css('width', 'calc(100% - 25px - 115px - ' + usernameWidth + 'px)');
-        
-        skidinc.console.print('Your new username is now <b>' + args[0] + '</b>.', function() {
-            if (skidinc.tutorial.enabled)
-                skidinc.tutorial.switchStep(1);
-        });
-    };
-};
+        skidinc.save.loadNow()
+        skidinc.console.print('Your new username is now <b>' + args[0] + '</b>.' );
+        if (skidinc.tutorial.enabled)
+        skidinc.tutorial.switchStep(1);
+}    };
+
 
 skidinc.player.earn = function(type, amount) {
     if (type == 'money') {
