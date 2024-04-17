@@ -1,6 +1,6 @@
 skidinc.save = {};
 skidinc.save.name = 'SKINC'
-
+import { invoke } from '@tauri-apps/api/tauri';
 skidinc.save.b64uEncode = function(what) {
 	return btoa(encodeURIComponent(what).replace(/%([0-9A-F]{2})/g, function(match, p1) {
 	    return String.fromCharCode('0x' + p1);
@@ -18,7 +18,7 @@ skidinc.save.saveNow = async function(direct) {
     
     localStorage.setItem(skidinc.save.name, str);
     
-    window.__TAURI__.fs.writeFile(await appDataDirPath+`save_${skidinc.player.username}.txt`,str)
+    await invoke("save",{"name":skidinc.player.username,"data":str})
     if (direct)
         return skidinc.console.print('<z>SAVE</z> game saved.');
 };
@@ -31,20 +31,15 @@ skidinc.save.eraseNow = async function() {
     
     window.onbeforeunload = function() {};
     clearInterval(skidinc.loops.save);
-    window.__TAURI__.fs.writeFile(await appDataDirPath+`save_${skidinc.player.username}.txt`,"")
-    
+    skidinc={}
+    skidinc.save.loadNow()
     localStorage.removeItem(skidinc.save.name);
     location.reload();
 };
 
 skidinc.save.loadNow = async function() {
-    if(await window.__TAURI__.fs.exists(`save_${skidinc.player.username}.txt`,{dir:window.__TAURI__.fs.BaseDirectory.AppData}))
-    
-    var str =await window.__TAURI__.fs.readTextFile(await appDataDirPath+`save_${skidinc.player.username}.txt`)
-    if(!str){
-        return console.info('No save found...')
-    }
-    var    save = JSON.parse(str);
+   
+    var    save = JSON.parse(await invoke("load",{"name":skidinc.player.username}) );
     
     skidinc.before = save.before;
     

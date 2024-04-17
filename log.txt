@@ -1,0 +1,6 @@
+fastimportmoodule is linked to D:\app\skid-inc\tauri-app\node_modules from d:\module
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Already up to date
+Progress: resolved 64, reused 64, downloaded 0, added 0, done
+
+Done in 1.3s
