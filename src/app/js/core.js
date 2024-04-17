@@ -27,6 +27,19 @@ skidinc.battery.timeMult = 1.10;
 skidinc.battery.cursorEnter = false;
 skidinc.battery.cursorLeave = true;
 skidinc.battery.oldState = 'null';
+skidinc.buy = {};
+skidinc.buy.secondArgs = [];
+skidinc.buy.thirdArgs = [];
+
+skidinc.buy.categories = ['autoscript', 'script', 'server', 'battery'];
+skidinc.buy.categoriesList = ['skidinc.autoscript.list', 'skidinc.script.listBuy', 'skidinc.server.list', 'skidinc.battery.list'];
+skidinc.buy.categoriesDesc = [
+    'buy autoscripts to automatize script execution.',
+    'buy new, more powerful scripts.',
+    'upgrade your servers to maximize your income.',
+    'upgrade your battery level.'
+];
+
 skidinc.fps = 20;
 skidinc.interval = 1000 / skidinc.fps;
 skidinc.version = 1;
@@ -35,6 +48,108 @@ skidinc.before = new Date().getTime();
 skidinc.now = new Date().getTime();
 
 skidinc.loops = {};
+skidinc.console = {};
+skidinc.console.typeSpeed = -50;
+skidinc.console.inputEnabled = true;
+skidinc.console.isTyping = false;
+
+skidinc.console.notAccepted = ['<', '>', '[', ']', '(', ')', ',', ';', '/', '\\', '\'', '"'];
+
+skidinc.console.history = [];
+skidinc.console.posInHistory = -1;
+
+skidinc.console.divs = -1;
+skidinc.console.divHeight = -1;
+
+skidinc.console.grammarly = false;
+
+skidinc.console.commands = [{
+    id: 'help',
+    desc: 'show a list of available commands.',
+    effect: 'skidinc.console.help()',
+    requireArg: false,
+    supportList: false,
+    supportHelp: false
+}, {
+    id: 'clear',
+    desc: 'remove all the logs from the terminal.',
+    effect: 'skidinc.console.clear()',
+    requireArg: false,
+    supportList: false,
+    supportHelp: false
+}, {
+    id: 'username',
+    desc: 'set your username, can only be used in the tutorial.',
+    effect: 'skidinc.player.setUsername',
+    requireArg: true,
+    argsType: ['base', 'string'],
+    supportList: false,
+    supportHelp: false
+}, {
+    id: 'script',
+    desc: 'execute a script.',
+    effect: 'skidinc.script.execute',
+    requireArg: true,
+    argsType: ['base', 'string'],
+    supportList: true,
+    listExec: 'skidinc.script.list',
+    supportHelp: true,
+    helpExec: 'skidinc.script.help'
+}, {
+    id: 'buy',
+    desc: 'buy things such as new scripts, auto-scripts and servers.',
+    effect: 'skidinc.buy.execute',
+    requireArg: true,
+    argsType: ['base', 'string'],
+    supportList: true,
+    listExec: 'skidinc.buy.list',
+    supportHelp: true,
+    helpExec: 'skidinc.buy.help'
+}, {
+    id: 'option',
+    desc: 'change in-game options.',
+    effect: 'skidinc.options.execute',
+    requireArg: true,
+    argsType: ['base', 'string', 'string'],
+    supportList: true,
+    listExec: 'skidinc.options.list',
+    supportHelp: true,
+    helpExec: 'skidinc.options.help'
+}, {
+    id: 'achievements',
+    desc: 'take a look on your progression.',
+    effect: 'skidinc.achievements.list()',
+    requireArg: false,
+    supportList: false,
+    supportHelp: false
+}];
+skidinc.kongregate = {};
+skidinc.options = {};
+skidinc.options.options = [{
+    id: 'theme',
+    desc: 'change the terminal theme (text colors, background).',
+    accept: ['default', 'stardust', 'matrix'],
+    exec: 'skidinc.options.switchTheme'
+}, {
+    id: 'invert',
+    desc: 'toggle color/background inversion on the terminal.',
+    accept: ['enable', 'disable'],
+    exec: 'skidinc.options.switchInversion'
+}, {
+    id: 'typed',
+    desc: 'toggle the typed text effect.',
+    accept: ['enable', 'disable'],
+    exec: 'skidinc.options.switchTyped'
+}];
+skidinc.options.themesUnlocked = [true, true,true];
+skidinc.options.typed = true;
+skidinc.options.matrixEnabled = false;
+
+skidinc.options.tab = 'overview';
+skidinc.options.tabs = ['overview', 'autoscripts', 'battery', 'prestige'];
+
+skidinc.options.secondArgs = [];
+skidinc.options.thirdArgs = [];
 
 skidinc.update = function(times) {
     skidinc.console.loop(times);
