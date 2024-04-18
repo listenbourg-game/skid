@@ -1,7 +1,6 @@
 skidinc.script = {};
 skidinc.script.secondArgs = [];
-const appDataDir=window.__TAURI__.path.appDataDir
-const appDataDirPath =  appDataDir().then((data)=>{return data});
+
 skidinc.script.available = true;
 skidinc.script.current = null;
 skidinc.script.time = 0;
@@ -13,19 +12,22 @@ skidinc.script.completed = [];
 skidinc.script.totalCompleted = 0;
 
 const i=async()=>{
-   var res=(await window.__TAURI__.fs.readTextFile(await appDataDirPath+`script.txt`)).toString().split("\n").map((item)=>{
+   var res=skidinc.parse(await skidinc.invoke("load",{name:"script.txt"})).split("\n").map((item)=>{
     var temp={}
     skidinc.script.secondArgs.push(item.replace("\r",''))
         temp.id=item.replace("\r",'')
         return temp
     }).map((item,index)=>{
         item.i=index
-        if(item.i==0){
-            skidinc.script.unlocked.push(true)   
-        }else{
-            skidinc.script.unlocked.push(false)
+        if(skidinc.script.unlocked.length<index){
+            if(item.i==0){
+                skidinc.script.unlocked.push(true)   
+            }else{
+                skidinc.script.unlocked.push(false)
+            }
+            skidinc.script.completed.push(0)
         }
-        skidinc.script.completed.push(0)
+        
         return item
     }).map((item)=>{
         item.time=Math.pow(4,item.i+1)

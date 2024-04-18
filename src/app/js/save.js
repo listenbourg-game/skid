@@ -1,6 +1,6 @@
 skidinc.save = {};
 skidinc.save.name = 'SKINC'
-import { invoke } from '@tauri-apps/api/tauri';
+
 skidinc.save.b64uEncode = function(what) {
 	return btoa(encodeURIComponent(what).replace(/%([0-9A-F]{2})/g, function(match, p1) {
 	    return String.fromCharCode('0x' + p1);
@@ -18,7 +18,7 @@ skidinc.save.saveNow = async function(direct) {
     
     localStorage.setItem(skidinc.save.name, str);
     
-    await invoke("save",{"name":skidinc.player.username,"data":str})
+    await skidinc.invoke("save",{"name":`save/${skidinc.player.username}.json`,"data":str})
     if (direct)
         return skidinc.console.print('<z>SAVE</z> game saved.');
 };
@@ -39,7 +39,7 @@ skidinc.save.eraseNow = async function() {
 
 skidinc.save.loadNow = async function() {
    
-    var    save = JSON.parse(await invoke("load",{"name":skidinc.player.username}) );
+    var    save = JSON.parse(await skidinc.invoke("load",{"name":`save/${skidinc.player.username}.json`}) );
     
     skidinc.before = save.before;
     
@@ -115,7 +115,7 @@ skidinc.save.soft = function() {
 };
 
 skidinc.save.init = function() {
-    skidinc.save.loadNow();
+    //skidinc.save.loadNow();
     
     skidinc.achievements.saveInit();
     

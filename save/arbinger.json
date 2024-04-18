@@ -1,0 +1,788 @@
+{
+  "fps": 20,
+  "interval": 50,
+  "version": 1,
+  "before": 1713367058173,
+  "now": 1713367058168,
+  "loops": {
+    "achievements": 11,
+    "save": 12,
+    "core": 13
+  },
+  "console": {
+    "typeSpeed": -50,
+    "inputEnabled": true,
+    "isTyping": false,
+    "notAccepted": [
+      "<",
+      ">",
+      "[",
+      "]",
+      "(",
+      ")",
+      ",",
+      ";",
+      "/",
+      "\\",
+      "'",
+      "\""
+    ],
+    "history": [
+      "script test",
+      "script test ",
+      "script -l",
+      "help",
+      "username arbinger"
+    ],
+    "posInHistory": -1,
+    "divs": 13,
+    "divHeight": -1,
+    "grammarly": true,
+    "commands": [
+      {
+        "id": "help",
+        "desc": "show a list of available commands.",
+        "effect": "skidinc.console.help()",
+        "requireArg": false,
+        "supportList": false,
+        "supportHelp": false
+      },
+      {
+        "id": "clear",
+        "desc": "remove all the logs from the terminal.",
+        "effect": "skidinc.console.clear()",
+        "requireArg": false,
+        "supportList": false,
+        "supportHelp": false
+      },
+      {
+        "id": "username",
+        "desc": "set your username, can only be used in the tutorial.",
+        "effect": "skidinc.player.setUsername",
+        "requireArg": true,
+        "argsType": [
+          "base",
+          "string"
+        ],
+        "supportList": false,
+        "supportHelp": false
+      },
+      {
+        "id": "script",
+        "desc": "execute a script.",
+        "effect": "skidinc.script.execute",
+        "requireArg": true,
+        "argsType": [
+          "base",
+          "string"
+        ],
+        "supportList": true,
+        "listExec": "skidinc.script.list",
+        "supportHelp": true,
+        "helpExec": "skidinc.script.help"
+      },
+      {
+        "id": "buy",
+        "desc": "buy things such as new scripts, auto-scripts and servers.",
+        "effect": "skidinc.buy.execute",
+        "requireArg": true,
+        "argsType": [
+          "base",
+          "string"
+        ],
+        "supportList": true,
+        "listExec": "skidinc.buy.list",
+        "supportHelp": true,
+        "helpExec": "skidinc.buy.help"
+      },
+      {
+        "id": "option",
+        "desc": "change in-game options.",
+        "effect": "skidinc.options.execute",
+        "requireArg": true,
+        "argsType": [
+          "base",
+          "string",
+          "string"
+        ],
+        "supportList": true,
+        "listExec": "skidinc.options.list",
+        "supportHelp": true,
+        "helpExec": "skidinc.options.help"
+      },
+      {
+        "id": "achievements",
+        "desc": "take a look on your progression.",
+        "effect": "skidinc.achievements.list()",
+        "requireArg": false,
+        "supportList": false,
+        "supportHelp": false
+      }
+    ]
+  },
+  "script": {
+    "secondArgs": [
+      "test",
+      "test",
+      "test"
+    ],
+    "available": true,
+    "current": null,
+    "time": 0,
+    "maxTime": 0,
+    "maxBar": 40,
+    "unlocked": [
+      true
+    ],
+    "completed": [
+      1
+    ],
+    "totalCompleted": 1,
+    "slist": {},
+    "scripts": [
+      {
+        "id": "test",
+        "i": 0,
+        "time": 4,
+        "exp": 11,
+        "cost": 20,
+        "money": 118
+      }
+    ]
+  },
+  "autoscript": {
+    "unlocked": [
+      false
+    ],
+    "time": [
+      0
+    ],
+    "cost": [
+      50
+    ]
+  },
+  "server": {
+    "servers": [
+      "telnet",
+      "web"
+    ],
+    "owned": [
+      0,
+      0
+    ],
+    "telnet": {
+      "id": "telnet",
+      "index": 0,
+      "price": 100,
+      "inflation": 1.5,
+      "max": 100,
+      "effects": {
+        "time": 0.05
+      }
+    },
+    "web": {
+      "id": "web",
+      "index": 1,
+      "price": 800,
+      "inflation": 1.5,
+      "max": null,
+      "effects": {
+        "money": 1.02,
+        "exp": 0.5
+      }
+    }
+  },
+  "buy": {
+    "secondArgs": [
+      "autoscript",
+      "script",
+      "server",
+      "battery"
+    ],
+    "thirdArgs": [
+      "test",
+      "telnet",
+      "web"
+    ],
+    "categories": [
+      "autoscript",
+      "script",
+      "server",
+      "battery"
+    ],
+    "categoriesList": [
+      "skidinc.autoscript.list",
+      "skidinc.script.listBuy",
+      "skidinc.server.list",
+      "skidinc.battery.list"
+    ],
+    "categoriesDesc": [
+      "buy autoscripts to automatize script execution.",
+      "buy new, more powerful scripts.",
+      "upgrade your servers to maximize your income.",
+      "upgrade your battery level."
+    ]
+  },
+  "player": {
+    "username": "arbinger",
+    "money": 118,
+    "totalMoney": 118,
+    "exp": 11,
+    "totalExp": 11,
+    "expReq": 100,
+    "level": 1,
+    "botnet": 0
+  },
+  "battery": {
+    "level": 1,
+    "levelCharge": 30,
+    "time": 0,
+    "price": 50000,
+    "inflation": 1.5,
+    "maxCharge": 120,
+    "chargePower": 7,
+    "chargePowerMult": 1,
+    "chargeTimeMult": 1,
+    "moneyPerLevel": 0.06,
+    "expPerLevel": 0.04,
+    "timePerLevel": 0.02,
+    "moneyEffect": 1.25,
+    "expEffect": 1.15,
+    "timeMult": 1.1,
+    "cursorEnter": false,
+    "cursorLeave": true,
+    "oldState": "low"
+  },
+  "achievements": {
+    "categories": [
+      "scriptsExecuted",
+      "levelReached",
+      "totalMoney",
+      "webLevel",
+      "telnetLevel",
+      "batteryLevel"
+    ],
+    "owned": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "ach": [
+      {
+        "name": "Kiddie I",
+        "desc": "Execute 10 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 10
+      },
+      {
+        "name": "Kiddie II",
+        "desc": "Execute 50 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 50
+      },
+      {
+        "name": "Kiddie III",
+        "desc": "Execute 250 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 250
+      },
+      {
+        "name": "Kiddie IV",
+        "desc": "Execute 1,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 1000
+      },
+      {
+        "name": "Kiddie V",
+        "desc": "Execute 2,500 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 2500
+      },
+      {
+        "name": "Hacker I",
+        "desc": "Execute 10,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 10000
+      },
+      {
+        "name": "Hacker II",
+        "desc": "Execute 75,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 75000
+      },
+      {
+        "name": "Hacker III",
+        "desc": "Execute 500,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 500000
+      },
+      {
+        "name": "Hacker IV",
+        "desc": "Execute 2,500,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 2500000
+      },
+      {
+        "name": "Hacker V",
+        "desc": "Execute 10,000,000 scripts.",
+        "category": "scriptsExecuted",
+        "icon": "fa-list-alt",
+        "varCheck": "skidinc.script.totalCompleted",
+        "typeCheck": ">=",
+        "amount": 10000000
+      },
+      {
+        "name": "Experienced I",
+        "desc": "Reach level 5.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 5
+      },
+      {
+        "name": "Experienced II",
+        "desc": "Reach level 10.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 10
+      },
+      {
+        "name": "Experienced III",
+        "desc": "Reach level 25.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 25
+      },
+      {
+        "name": "The Answer",
+        "desc": "Reach level 42.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 42
+      },
+      {
+        "name": "Mentor I",
+        "desc": "Reach level 50.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 50
+      },
+      {
+        "name": "Mentor II",
+        "desc": "Reach level 60.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 60
+      },
+      {
+        "name": "Mentor III",
+        "desc": "Reach level 70.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 70
+      },
+      {
+        "name": "Mentor IV",
+        "desc": "Reach level 80.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 80
+      },
+      {
+        "name": "Mentor V",
+        "desc": "Reach level 90.",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 90
+      },
+      {
+        "name": "Maximam Solis",
+        "desc": "Reach level 100 (max level).",
+        "category": "levelReached",
+        "icon": "fa-star",
+        "varCheck": "skidinc.player.level",
+        "typeCheck": ">=",
+        "amount": 100
+      },
+      {
+        "name": "Earner I",
+        "desc": "Earn a total of $15,000.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 15000
+      },
+      {
+        "name": "Earner II",
+        "desc": "Earn a total of $500,000.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 500000
+      },
+      {
+        "name": "Earner III",
+        "desc": "Earn a total of $1,000,000.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 1000000
+      },
+      {
+        "name": "Earner VI",
+        "desc": "Earn a total of $50,000,000.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 50000000
+      },
+      {
+        "name": "Earner V",
+        "desc": "Earn a total of $750,000,000.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 750000000
+      },
+      {
+        "name": "Banker I",
+        "desc": "Earn a total of $10.000b.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 10000000000
+      },
+      {
+        "name": "Banker II",
+        "desc": "Earn a total of $100.000b.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 100000000000
+      },
+      {
+        "name": "Banker III",
+        "desc": "Earn a total of $1.000t.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 1000000000000
+      },
+      {
+        "name": "Banker IV",
+        "desc": "Earn a total of $100.000t.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 100000000000000
+      },
+      {
+        "name": "Banker V",
+        "desc": "Earn a total of $10.000q.",
+        "category": "totalMoney",
+        "icon": "fa-money",
+        "varCheck": "skidinc.player.totalMoney",
+        "typeCheck": ">=",
+        "amount": 10000000000000000
+      },
+      {
+        "name": "Webmaster I",
+        "desc": "Upgrade your web server to level 1.",
+        "category": "webLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
+        "typeCheck": ">=",
+        "amount": 1
+      },
+      {
+        "name": "Webmaster II",
+        "desc": "Upgrade your web server to level 25.",
+        "category": "webLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
+        "typeCheck": ">=",
+        "amount": 25
+      },
+      {
+        "name": "Webmaster III",
+        "desc": "Upgrade your web server to level 50.",
+        "category": "webLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
+        "typeCheck": ">=",
+        "amount": 50
+      },
+      {
+        "name": "Webmaster IV",
+        "desc": "Upgrade your web server to level 100.",
+        "category": "webLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
+        "typeCheck": ">=",
+        "amount": 100
+      },
+      {
+        "name": "Webmaster V",
+        "desc": "Upgrade your web server to level 200.",
+        "category": "webLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
+        "typeCheck": ">=",
+        "amount": 200
+      },
+      {
+        "name": "Virtualization I",
+        "desc": "Upgrade your telnet server to level 1.",
+        "category": "telnetLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
+        "typeCheck": ">=",
+        "amount": 1
+      },
+      {
+        "name": "Virtualization II",
+        "desc": "Upgrade your telnet server to level 25.",
+        "category": "telnetLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
+        "typeCheck": ">=",
+        "amount": 25
+      },
+      {
+        "name": "Virtualization III",
+        "desc": "Upgrade your telnet server to level 50.",
+        "category": "telnetLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
+        "typeCheck": ">=",
+        "amount": 50
+      },
+      {
+        "name": "Virtualization IV",
+        "desc": "Upgrade your telnet server to level 75.",
+        "category": "telnetLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
+        "typeCheck": ">=",
+        "amount": 75
+      },
+      {
+        "name": "Virtualization V",
+        "desc": "Upgrade your telnet server to level 100 (max level).",
+        "category": "telnetLevel",
+        "icon": "fa-server",
+        "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
+        "typeCheck": ">=",
+        "amount": 100
+      },
+      {
+        "name": "Charge I",
+        "desc": "Upgrade your battery to level 5.",
+        "category": "batteryLevel",
+        "icon": "fa-battery-full",
+        "varCheck": "skidinc.battery.level",
+        "typeCheck": ">=",
+        "amount": 5
+      },
+      {
+        "name": "Charge II",
+        "desc": "Upgrade your battery to level 10.",
+        "category": "batteryLevel",
+        "icon": "fa-battery-full",
+        "varCheck": "skidinc.battery.level",
+        "typeCheck": ">=",
+        "amount": 10
+      },
+      {
+        "name": "Charge III",
+        "desc": "Upgrade your battery to level 25.",
+        "category": "batteryLevel",
+        "icon": "fa-battery-full",
+        "varCheck": "skidinc.battery.level",
+        "typeCheck": ">=",
+        "amount": 25
+      },
+      {
+        "name": "Charge IV",
+        "desc": "Upgrade your battery to level 50.",
+        "category": "batteryLevel",
+        "icon": "fa-battery-full",
+        "varCheck": "skidinc.battery.level",
+        "typeCheck": ">=",
+        "amount": 50
+      },
+      {
+        "name": "Charge V",
+        "desc": "Upgrade your battery to level 75.",
+        "category": "batteryLevel",
+        "icon": "fa-battery-full",
+        "varCheck": "skidinc.battery.level",
+        "typeCheck": ">=",
+        "amount": 75
+      }
+    ]
+  },
+  "prestige": {
+    "botnetOnReset": 0,
+    "baseMult": 0.04
+  },
+  "options": {
+    "options": [
+      {
+        "id": "theme",
+        "desc": "change the terminal theme (text colors, background).",
+        "accept": [
+          "default",
+          "stardust",
+          "matrix"
+        ],
+        "exec": "skidinc.options.switchTheme"
+      },
+      {
+        "id": "invert",
+        "desc": "toggle color/background inversion on the terminal.",
+        "accept": [
+          "enable",
+          "disable"
+        ],
+        "exec": "skidinc.options.switchInversion"
+      },
+      {
+        "id": "typed",
+        "desc": "toggle the typed text effect.",
+        "accept": [
+          "enable",
+          "disable"
+        ],
+        "exec": "skidinc.options.switchTyped"
+      }
+    ],
+    "themesUnlocked": [
+      true,
+      true,
+      true
+    ],
+    "typed": true,
+    "matrixEnabled": false,
+    "tab": "overview",
+    "tabs": [
+      "overview",
+      "autoscripts",
+      "battery",
+      "prestige"
+    ],
+    "secondArgs": [
+      "theme",
+      "invert",
+      "typed"
+    ],
+    "thirdArgs": [
+      "enable",
+      "disable"
+    ]
+  },
+  "tutorial": {
+    "enabled": false,
+    "finish": true,
+    "step": 3
+  },
+  "save": {
+    "name": "SKINC"
+  },
+  "kongregate": {}
+}

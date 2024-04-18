@@ -1,1 +1,9 @@
-test 
+hare.ctx
+yerg.trj
+acid.pl
+memz.rsm
+gruel.vbs
+cih.win
+worm.cs
+blazer.dos
+plot.muo
