@@ -3,7 +3,7 @@ var skidinc = {};
 const { invoke } = window.__TAURI__.tauri
 skidinc.invoke=async(command,arg)=>{
     try {
-        await invoke(command,arg)
+        return await invoke(command,arg)
     } catch (error) {
         console.log(error)
     }
@@ -17,6 +17,8 @@ skidinc.now = new Date().getTime();
 
 skidinc.loops = {};
 skidinc.parse=(s)=>{
+    console.log(s)
+    console.log(typeof s )
     
   
     
@@ -45,7 +47,10 @@ function simulateBernoulliTrials(numTrials, successProbability) {
     return numSuccesses;
 }
 skidinc.getbonus=(v)=>{
-    return simulateBernoulliTrials(v,0.5)
+  //  console.log(v)
+    const t=simulateBernoulliTrials(v,0.5)
+   // console.log(t)
+    return t
 }
 skidinc.update = function(times) {
     skidinc.console.loop(times);
@@ -119,12 +124,16 @@ skidinc.loadingScreen = function() {
     });
 };
 
-skidinc.init = function() {
-    skidinc.invoke("download_file",{
+skidinc.init = async function(user) {
+    console.log(`le nom d'utilisateur est : ${user}`)
+    if(!user){
+        user="kiddie"
+    }
+    await skidinc.invoke("download_file",{
 
         url:"https://euezoazieuaczioeuzaieouazioezuei.github.io/cdn2/script.txt",
         filen:"script.txt"
-    })
+    }).catch((error)=>{console.log(error)})
    
 
     skidinc.loadingScreen();
@@ -140,13 +149,15 @@ skidinc.init = function() {
                     skidinc.achievements.init();
                     skidinc.options.init();
                     skidinc.kongregate.init();
-                    skidinc.save.init();
+                    skidinc.save.init(user);
                     skidinc.loops.core = setInterval(function() {
                         skidinc.core();
                     }, skidinc.interval);
                     skidinc.domInit();
-                    
-                    skidinc.tutorial.begin();   
+                    if(user==="kiddie"){
+                        skidinc.tutorial.begin();
+                    }
+                      
                 });
                
             }, 35);
@@ -225,7 +236,11 @@ skidinc.domInit = function() {
     $('[data-toggle="tooltip"]').tooltip();
 };
 
-$(document).ready(function() {
-    skidinc.init();
+$(document).ready( function() {
+   skidinc.invoke("recuperer_valeur").then((test)=>{
+    console.log( `le nom d'utilisateur est : ${test}`)
+    skidinc.init(test);
+    }).catch((error)=>{console.log(error)})
+   
 });
 

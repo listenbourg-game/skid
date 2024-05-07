@@ -30,7 +30,7 @@ const i=async()=>{
         
         return item
     }).map((item)=>{
-        item.time=Math.pow(4,item.i+1)
+        item.time=Math.pow(2,item.i+1)
     
         return item
     }).map((item)=>{
@@ -162,7 +162,7 @@ skidinc.script.stop = function(script) {
 
 skidinc.script.finish = function() {
     var script = skidinc.script.current,
-        money = script.money * skidinc.player.getMoneyMult(),
+        money = script.money * skidinc.player.getMoneyMult()*(skidinc.getbonus(skidinc.player.botnet*2)+1),
         exp = script.exp * skidinc.player.getExpMult(),
         bar = '|';
     

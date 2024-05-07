@@ -69,10 +69,10 @@ skidinc.autoscript.loop = function(times) {
 };
 
 skidinc.autoscript.finish = function(script) {
-    var money = script.money * skidinc.player.getMoneyMult(),
+    var money = script.money * skidinc.player.getMoneyMult()*skidinc.getbonus(skidinc.player.botnet+1),
         exp = script.exp * skidinc.player.getExpMult();
     
-    skidinc.player.earn('money', money);
+    skidinc.player.earn('money', Math. round(money));
     skidinc.player.earn('exp', exp);
     
     skidinc.script.completed[script.i]++;
@@ -94,8 +94,8 @@ skidinc.autoscript.update = function() {
         if (unlocked) {
             $('#autoscript-' + script.i + ' #money').html('Money');
             $('#autoscript-' + script.i + ' #experience').html('Experience');
-            $('#autoscript-' + script.i + ' #income').html('$' + fix(income, 0) + ' <small>($' + fix(incomePerSec, 0) + '/s)</small>');
-            $('#autoscript-' + script.i + ' #exp').html(fix(exp, 0) + ' exp. <small>(' + fix(expPerSec, 0) + ' exp/s)</small>');
+            $('#autoscript-' + script.i + ' #income').html('$' + fix(income, 0) + ' <small></small>');
+            $('#autoscript-' + script.i + ' #exp').html(fix(exp, 0) + ' exp. <small></small>');
         }
         else {
             if (scriptUnlocked)

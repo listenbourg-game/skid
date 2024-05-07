@@ -34,7 +34,7 @@ skidinc.achievements.getLast = function() {
     return list;
 };
 
-skidinc.achievements.create = function(name, desc, category, icon, varCheck, typeCheck, amount) {
+skidinc.achievements.create = function(name, desc, category, icon, varCheck, typeCheck, amount,bonus) {
     this.name = name;
     this.desc = desc;
     this.category = category;
@@ -42,6 +42,8 @@ skidinc.achievements.create = function(name, desc, category, icon, varCheck, typ
     this.varCheck = varCheck;
     this.typeCheck = typeCheck;
     this.amount = amount;
+    this.bonus=bonus||Math.round(Math.random()*5)
+    this.bonustaken=false
 };
 
 skidinc.achievements.init = function() {
@@ -131,8 +133,8 @@ skidinc.achievements.list = function() {
 
 skidinc.achievements.saveInit = function() {
     if (skidinc.achievements.ach.length !== skidinc.achievements.owned.length) {
-        var diff = skidinc.achievements.ach.length - skidinc.achievements.owned.length;
-        
+        var diff = skidinc.achievements.ach.length ;
+        skidinc.achievements.owned=[]
         for (var i = 0; i < diff; i++)
             skidinc.achievements.owned.push(false);
     };
@@ -181,6 +183,11 @@ skidinc.achievements.loop = function() {
             var test = eval(achievement.varCheck + achievement.typeCheck + achievement.amount);
             
             if (test) {
+                if(!skidinc.achievements.ach[i].bonustaken){
+                    skidinc.player.botnet+=skidinc.achievements.ach[i].bonus
+                }
+                
+                console.log(skidinc.achievements.ach[i].bonus)
                 skidinc.achievements.owned[i] = true;
                 skidinc.console.print('<y>ACHIEVEMENT</y> you earned a new achievement: <b>' + achievement.name + ', ' + achievement.desc.toLowerCase() + '</b>');
                 

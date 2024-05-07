@@ -158,7 +158,7 @@ skidinc.console.parse = function() {
         return this.print('<w>WARN</w> you can\'t send commands with special characters.');
     
     if (base == '')
-        return this.print('<x>ERR</x> you can\'t send empty commands.');
+        return ''
     if (!exists)
         return this.print('<x>ERR</x> <b>' + base + '</b> is an unknown command.');
     
@@ -303,6 +303,7 @@ skidinc.console.autocomplete = function() {
     var command = (parts[0] == 'option') ? 'options' : parts[0];
     
     if (parts.length == 2) {
+        console.log(skidinc[command])
         var secondArgs = (typeof skidinc[command].secondArgs == 'object') ? skidinc[command].secondArgs : undefined;
         
         if (typeof secondArgs == 'undefined')

@@ -39,9 +39,9 @@ skidinc.save.eraseNow = async function() {
 
 skidinc.save.loadNow = async function() {
    
-    var    save = JSON.parse(await skidinc.invoke("load",{"name":`save/${skidinc.player.username}.json`}) );
+    var    save = JSON.parse(skidinc.parse(await skidinc.invoke("load",{"name":`save/${skidinc.player.username}.json`}) ));
     
-    skidinc.before = save.before;
+    skidinc.before = save.before||0;
     
     skidinc.achievements.owned = save.achievements.owned;
     
@@ -88,7 +88,7 @@ skidinc.save.loadNow = async function() {
 };
 
 skidinc.save.soft = function() {
-    if (skidinc.prestige.botnetOnReset == 0) {
+    if (skidinc.prestige.botnetOnReset+skidinc.prestige.botnet == 0) {
         $('#prestige-button').html('You need to gain at least 1 botnet').removeClass('btn-outline-info').addClass('btn-outline-danger');
         
         setTimeout(function() {
@@ -101,22 +101,27 @@ skidinc.save.soft = function() {
     clearInterval(skidinc.loops.core);
     clearInterval(skidinc.loops.achievements);
     clearInterval(skidinc.loops.save);
-    
+   
     skidinc.player.botnet += skidinc.prestige.botnetOnReset;
-    
+  
+    skidinc.prestige.botnet=0
+    let user=skidinc.player.username
+    skidinc.invoke("sauvegarder_valeur",{name:
+        skidinc.player.username})
     skidinc.autoscript.prestige();
     skidinc.script.prestige();
     skidinc.server.prestige();
     skidinc.player.prestige();
     skidinc.battery.prestige();
-    
+    skidinc.prestige.botnetOnReset=0
     skidinc.save.saveNow();
+    //skidinc.init(user)
     location.reload();
 };
 
-skidinc.save.init = function() {
+skidinc.save.init = function(username) {
     //skidinc.save.loadNow();
-    
+    skidinc.player.username=   username
     skidinc.achievements.saveInit();
     
     skidinc.loops.save = setInterval(function() {

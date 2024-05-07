@@ -2,16 +2,16 @@
   "fps": 20,
   "interval": 50,
   "version": 1,
-  "before": 1713366813153,
-  "now": 1713366813150,
+  "before": 1714560127420,
+  "now": 1714560127255,
   "loops": {
-    "achievements": 11,
-    "save": 12,
-    "core": 13
+    "achievements": 78,
+    "save": 79,
+    "core": 80
   },
   "console": {
     "typeSpeed": -50,
-    "inputEnabled": true,
+    "inputEnabled": false,
     "isTyping": false,
     "notAccepted": [
       "<",
@@ -116,9 +116,36 @@
   },
   "script": {
     "secondArgs": [
-      "test",
-      "test",
-      "test"
+      "hare.ctx",
+      "yerg.trj",
+      "acid.pl",
+      "memz.rsm",
+      "gruel.vbs",
+      "cih.win",
+      "worm.cs",
+      "blazer.dos",
+      "plot.muo",
+      "",
+      "hare.ctx",
+      "yerg.trj",
+      "acid.pl",
+      "memz.rsm",
+      "gruel.vbs",
+      "cih.win",
+      "worm.cs",
+      "blazer.dos",
+      "plot.muo",
+      "",
+      "hare.ctx",
+      "yerg.trj",
+      "acid.pl",
+      "memz.rsm",
+      "gruel.vbs",
+      "cih.win",
+      "worm.cs",
+      "blazer.dos",
+      "plot.muo",
+      ""
     ],
     "available": true,
     "current": null,
@@ -126,33 +153,150 @@
     "maxTime": 0,
     "maxBar": 40,
     "unlocked": [
-      true
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
     ],
     "completed": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     "totalCompleted": 0,
     "slist": {},
     "scripts": [
       {
-        "id": "test",
+        "id": "hare.ctx",
         "i": 0,
-        "time": 4,
+        "time": 2,
         "exp": 11,
         "cost": 20,
         "money": 118
+      },
+      {
+        "id": "yerg.trj",
+        "i": 1,
+        "time": 4,
+        "exp": 121,
+        "cost": 400,
+        "money": 236
+      },
+      {
+        "id": "acid.pl",
+        "i": 2,
+        "time": 8,
+        "exp": 1331,
+        "cost": 8000,
+        "money": 354
+      },
+      {
+        "id": "memz.rsm",
+        "i": 3,
+        "time": 16,
+        "exp": 14641,
+        "cost": 160000,
+        "money": 472
+      },
+      {
+        "id": "gruel.vbs",
+        "i": 4,
+        "time": 32,
+        "exp": 161051,
+        "cost": 3200000,
+        "money": 590
+      },
+      {
+        "id": "cih.win",
+        "i": 5,
+        "time": 64,
+        "exp": 1771561,
+        "cost": 64000000,
+        "money": 708
+      },
+      {
+        "id": "worm.cs",
+        "i": 6,
+        "time": 128,
+        "exp": 19487171,
+        "cost": 1280000000,
+        "money": 826
+      },
+      {
+        "id": "blazer.dos",
+        "i": 7,
+        "time": 256,
+        "exp": 214358881,
+        "cost": 25600000000,
+        "money": 944
+      },
+      {
+        "id": "plot.muo",
+        "i": 8,
+        "time": 512,
+        "exp": 2357947691,
+        "cost": 512000000000,
+        "money": 1062
+      },
+      {
+        "id": "",
+        "i": 9,
+        "time": 1024,
+        "exp": 25937424601,
+        "cost": 10240000000000,
+        "money": 1180
       }
     ]
   },
   "autoscript": {
     "unlocked": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
       false
     ],
     "time": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     "cost": [
-      50
+      50,
+      1250,
+      31250,
+      781250,
+      19531250,
+      488281250,
+      12207031250,
+      305175781250,
+      7629394531250,
+      190734863281250
     ]
   },
   "server": {
@@ -194,7 +338,16 @@
       "battery"
     ],
     "thirdArgs": [
-      "test",
+      "hare.ctx",
+      "yerg.trj",
+      "acid.pl",
+      "memz.rsm",
+      "gruel.vbs",
+      "cih.win",
+      "worm.cs",
+      "blazer.dos",
+      "plot.muo",
+      "",
       "telnet",
       "web"
     ],
@@ -311,7 +464,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 10
+        "amount": 10,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Kiddie II",
@@ -320,7 +475,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 50
+        "amount": 50,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Kiddie III",
@@ -329,7 +486,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 250
+        "amount": 250,
+        "bonus": 0,
+        "bonustaken": false
       },
       {
         "name": "Kiddie IV",
@@ -338,7 +497,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 1000
+        "amount": 1000,
+        "bonus": 5,
+        "bonustaken": false
       },
       {
         "name": "Kiddie V",
@@ -347,7 +508,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 2500
+        "amount": 2500,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Hacker I",
@@ -356,7 +519,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 10000
+        "amount": 10000,
+        "bonus": 0,
+        "bonustaken": false
       },
       {
         "name": "Hacker II",
@@ -365,7 +530,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 75000
+        "amount": 75000,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Hacker III",
@@ -374,7 +541,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 500000
+        "amount": 500000,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Hacker IV",
@@ -383,7 +552,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 2500000
+        "amount": 2500000,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Hacker V",
@@ -392,7 +563,9 @@
         "icon": "fa-list-alt",
         "varCheck": "skidinc.script.totalCompleted",
         "typeCheck": ">=",
-        "amount": 10000000
+        "amount": 10000000,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Experienced I",
@@ -401,7 +574,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 5
+        "amount": 5,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Experienced II",
@@ -410,7 +585,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 10
+        "amount": 10,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Experienced III",
@@ -419,7 +596,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 25
+        "amount": 25,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "The Answer",
@@ -428,7 +607,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 42
+        "amount": 42,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Mentor I",
@@ -437,7 +618,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 50
+        "amount": 50,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Mentor II",
@@ -446,7 +629,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 60
+        "amount": 60,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Mentor III",
@@ -455,7 +640,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 70
+        "amount": 70,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Mentor IV",
@@ -464,7 +651,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 80
+        "amount": 80,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Mentor V",
@@ -473,7 +662,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 90
+        "amount": 90,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Maximam Solis",
@@ -482,7 +673,9 @@
         "icon": "fa-star",
         "varCheck": "skidinc.player.level",
         "typeCheck": ">=",
-        "amount": 100
+        "amount": 100,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Earner I",
@@ -491,7 +684,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 15000
+        "amount": 15000,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Earner II",
@@ -500,7 +695,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 500000
+        "amount": 500000,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Earner III",
@@ -509,7 +706,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 1000000
+        "amount": 1000000,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Earner VI",
@@ -518,7 +717,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 50000000
+        "amount": 50000000,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Earner V",
@@ -527,7 +728,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 750000000
+        "amount": 750000000,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Banker I",
@@ -536,7 +739,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 10000000000
+        "amount": 10000000000,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Banker II",
@@ -545,7 +750,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 100000000000
+        "amount": 100000000000,
+        "bonus": 0,
+        "bonustaken": false
       },
       {
         "name": "Banker III",
@@ -554,7 +761,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 1000000000000
+        "amount": 1000000000000,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Banker IV",
@@ -563,7 +772,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 100000000000000
+        "amount": 100000000000000,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Banker V",
@@ -572,7 +783,9 @@
         "icon": "fa-money",
         "varCheck": "skidinc.player.totalMoney",
         "typeCheck": ">=",
-        "amount": 10000000000000000
+        "amount": 10000000000000000,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Webmaster I",
@@ -581,7 +794,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
         "typeCheck": ">=",
-        "amount": 1
+        "amount": 1,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Webmaster II",
@@ -590,7 +805,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
         "typeCheck": ">=",
-        "amount": 25
+        "amount": 25,
+        "bonus": 0,
+        "bonustaken": false
       },
       {
         "name": "Webmaster III",
@@ -599,7 +816,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
         "typeCheck": ">=",
-        "amount": 50
+        "amount": 50,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Webmaster IV",
@@ -608,7 +827,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
         "typeCheck": ">=",
-        "amount": 100
+        "amount": 100,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Webmaster V",
@@ -617,7 +838,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"web\")]",
         "typeCheck": ">=",
-        "amount": 200
+        "amount": 200,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Virtualization I",
@@ -626,7 +849,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
         "typeCheck": ">=",
-        "amount": 1
+        "amount": 1,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Virtualization II",
@@ -635,7 +860,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
         "typeCheck": ">=",
-        "amount": 25
+        "amount": 25,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Virtualization III",
@@ -644,7 +871,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
         "typeCheck": ">=",
-        "amount": 50
+        "amount": 50,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Virtualization IV",
@@ -653,7 +882,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
         "typeCheck": ">=",
-        "amount": 75
+        "amount": 75,
+        "bonus": 5,
+        "bonustaken": false
       },
       {
         "name": "Virtualization V",
@@ -662,7 +893,9 @@
         "icon": "fa-server",
         "varCheck": "skidinc.server.owned[skidinc.server.servers.indexOf(\"telnet\")]",
         "typeCheck": ">=",
-        "amount": 100
+        "amount": 100,
+        "bonus": 2,
+        "bonustaken": false
       },
       {
         "name": "Charge I",
@@ -671,7 +904,9 @@
         "icon": "fa-battery-full",
         "varCheck": "skidinc.battery.level",
         "typeCheck": ">=",
-        "amount": 5
+        "amount": 5,
+        "bonus": 4,
+        "bonustaken": false
       },
       {
         "name": "Charge II",
@@ -680,7 +915,9 @@
         "icon": "fa-battery-full",
         "varCheck": "skidinc.battery.level",
         "typeCheck": ">=",
-        "amount": 10
+        "amount": 10,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Charge III",
@@ -689,7 +926,9 @@
         "icon": "fa-battery-full",
         "varCheck": "skidinc.battery.level",
         "typeCheck": ">=",
-        "amount": 25
+        "amount": 25,
+        "bonus": 3,
+        "bonustaken": false
       },
       {
         "name": "Charge IV",
@@ -698,7 +937,9 @@
         "icon": "fa-battery-full",
         "varCheck": "skidinc.battery.level",
         "typeCheck": ">=",
-        "amount": 50
+        "amount": 50,
+        "bonus": 1,
+        "bonustaken": false
       },
       {
         "name": "Charge V",
@@ -707,12 +948,15 @@
         "icon": "fa-battery-full",
         "varCheck": "skidinc.battery.level",
         "typeCheck": ">=",
-        "amount": 75
+        "amount": 75,
+        "bonus": 3,
+        "bonustaken": false
       }
     ]
   },
   "prestige": {
     "botnetOnReset": 0,
+    "botnet": 0,
     "baseMult": 0.04
   },
   "options": {
